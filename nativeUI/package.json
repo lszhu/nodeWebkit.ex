@@ -1,0 +1,12 @@
+{
+    "name": "nativeUI",
+    "main": "index.html",
+    "description": "study demo",
+    "version": "0.1",
+    "window": {
+        "icon": "link.png",
+        "toolbar": true,
+        "width": 800,
+        "height": 600
+    }
+}
