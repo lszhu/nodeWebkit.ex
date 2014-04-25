@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Window operation</title>
+    <style>
+        table, td {
+            border: solid black 1px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+    win.on('minimize', function() {
+        console.log('Window is minimized');
+    });
+    setTimeout(function() {
+        win.minimize();
+        win.removeAllListeners('minimize');
+    }, 1000);
+    setTimeout(function() {win.restore();}, 2000);
+    var table = document.createElement('table');
+    var rows = '';
+    rows += '<tr><td>coordinate:</td><td>(' + win.x +
+            ', ' + win.y + ')</td></tr>';
+    rows += '<tr><td>title:</td><td>' + win.title + '</td></tr>';
+    rows += '<tr><td>leng/width</td><td>' + win.width +
+            '/' + win.height + '</td></tr>';
+    table.innerHTML = rows;
+    document.body.appendChild(table);
+    setTimeout(function() {
+        win.x = 100;
+        win.y = 100;
+        win.blur();
+    }, 5000);
+
+    setTimeout(function() {
+        new_win.focus();
+        new_win.capturePage(function (img) {
+            var image = document.createElement('img');
+            image.src = img;
+            win.document.body.appendChild(image);
+        }, 8000);
+
+        new_win = gui.Window.get(window.open('http://www.kernel.org'));
+        new_win.on('focus', function () {
+            console.log('New window is focused');
+        });
+    });
+</script>
+</body>
+</html>
