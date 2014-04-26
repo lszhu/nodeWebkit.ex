@@ -1,0 +1,70 @@
+<html>
+<head>
+    <title>Window operation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        table, td {
+            border: solid black 1px;
+        }
+        iframe {
+            width: 800px;
+            height: 500px;
+        }
+        #title {
+            height: 22px;
+            width: 100%;
+            background-color: lightblue;
+            -webkit-app-region: drag;
+            -webkit-user-select: none;
+        }
+        #title div {
+            float: right;
+            border: solid gray 1px;
+            -webkit-app-region: no-drag;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+<div id="title">
+    my app
+    <div id="close">close</div>
+    <div id="full">full</div>
+    <div id="minimize">min</div>
+</div>
+<iframe src="http://gcc.gnu.org"></iframe>
+<script>
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+    var maximized = false;
+    function init() {
+        var minify = document.getElementById('minimize');
+        minify.addEventListener('click', function(e) {
+            win.minimize();
+        });
+        var full = document.getElementById('full');
+        full.addEventListener('click', function(e) {
+            if (!maximized) {
+                win.maximize();
+                maximized = ! maximized;
+            } else {
+                win.unmaximize();
+                maximized = ! maximized;
+            }
+        });
+        var close = document.getElementById('close');
+        close.addEventListener('click', function(e) {
+            win.close();
+        });
+    }
+    window.addEventListener('load', init);
+</script>
+</body>
+</html>

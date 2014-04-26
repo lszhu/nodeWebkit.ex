@@ -1,0 +1,12 @@
+{
+    "name": "FrameLessWindow",
+    "main": "index.html",
+    "description": "study demo",
+    "version": "0.1",
+    "window": {
+        "frame": false,
+        "toolbar": false,
+        "width": 900,
+        "height": 600
+    }
+}
