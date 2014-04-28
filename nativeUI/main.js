@@ -67,23 +67,26 @@ console.log('Operation System:' + os.platform());
 
 function initMenubar() {
     var subMenu;
-    var menuData = require('./menu').menuData;
-    console.log(menuData);/*
+    var menu = require('./menu.js');
+    var menuData = menu.data();
+    console.log('menuData.file: ' + menuData.file);
     for (var sub in menuData) {
         if (!menuData.hasOwnProperty(sub)) {
             continue;
         }
+        console.log(menuData[sub]);
         subMenu = new gui.Menu();
         for (var opt in menuData[sub]) {
             if (!menuData[sub].hasOwnProperty(opt)) {
                 continue;
             }
-            subMenu.append(new gui.MenuItem(menuData[sub]));
+            subMenu.append(new gui.MenuItem(menuData[sub][opt]));
             console.log(subMenu.items[0]);
         }
         menubar.append(new gui.MenuItem({label: sub, submenu: subMenu}));
     }
-    win.menu = menubar;*/
+    console.log('reach end.');
+    win.menu = menubar;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
