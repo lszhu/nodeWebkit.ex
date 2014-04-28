@@ -3,7 +3,7 @@ var win = gui.Window.get();
 win.width = 1200;
 win.height = 800;
 var maximized = false;
-// init the base frame window, add minimize, maximize and close button
+// init the basic frame window, add minimize, maximize and close button
 function initFrame() {
     var minify = document.getElementById('minimize');
     minify.addEventListener('click', function(e) {
@@ -24,11 +24,7 @@ function initFrame() {
         win.close();
     });
 }
-window.addEventListener('load', function() {
-    initFrame();
-    initContextMenu()
-});
-
+// init basic context menu
 function initContextMenu() {
     var menu = new gui.Menu();
     menu.append(new gui.MenuItem({label: 'refresh'}));
@@ -72,3 +68,8 @@ function initContextMenu() {
         return false;
     });
 }
+
+window.addEventListener('load', function() {
+    initFrame();
+    initContextMenu();
+});
