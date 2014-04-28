@@ -14,8 +14,8 @@
             border: solid black 1px;
         }
         iframe {
-            width: 800px;
-            height: 500px;
+            width: 99%;
+            height: 95%;
         }
         #title {
             height: 22px;
@@ -43,6 +43,7 @@
 <script>
     var gui = require('nw.gui');
     var win = gui.Window.get();
+    win.window.width = 1200;
     var maximized = false;
     function init() {
         var minify = document.getElementById('minimize');
