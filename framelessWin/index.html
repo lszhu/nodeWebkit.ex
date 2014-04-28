@@ -15,7 +15,7 @@
         }
         iframe {
             width: 99%;
-            height: 95%;
+            height: 55%;
         }
         #title {
             height: 22px;
@@ -26,46 +26,30 @@
         }
         #title div {
             float: right;
-            border: solid gray 1px;
             -webkit-app-region: no-drag;
             cursor: default;
         }
+        #title div img {
+            width: 16px;
+            height: 16px;
+            margin: 2px 5px;
+        }
+        #title img {
+            clear: right;
+            vertical-align: middle;
+        }
     </style>
+    <script src="main.js"></script>
 </head>
 <body>
 <div id="title">
-    my app
-    <div id="close">close</div>
-    <div id="full">full</div>
-    <div id="minimize">min</div>
+    <span><img src="images/email.png" /><strong>&nbsp;my app</strong></span>
+    <div id="close"><img src="images/close.png" /></div>
+    <div id="full"><img src="images/resize.png" /></div>
+    <div id="minimize"><img src="images/minimize.png" /></div>
 </div>
 <iframe src="http://gcc.gnu.org"></iframe>
-<script>
-    var gui = require('nw.gui');
-    var win = gui.Window.get();
-    win.window.width = 1200;
-    var maximized = false;
-    function init() {
-        var minify = document.getElementById('minimize');
-        minify.addEventListener('click', function(e) {
-            win.minimize();
-        });
-        var full = document.getElementById('full');
-        full.addEventListener('click', function(e) {
-            if (!maximized) {
-                win.maximize();
-                maximized = ! maximized;
-            } else {
-                win.unmaximize();
-                maximized = ! maximized;
-            }
-        });
-        var close = document.getElementById('close');
-        close.addEventListener('click', function(e) {
-            win.close();
-        });
-    }
-    window.addEventListener('load', init);
-</script>
+<h1>The GNU Compiler Collection</h1>
+
 </body>
 </html>
