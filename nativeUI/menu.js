@@ -51,8 +51,8 @@ exports.data = function() {
             }
         },
         view: {
-            open: {
-                label: 'open',
+            display: {
+                label: 'display',
                     type: 'normal',
                     icon: 'images/email.png'
             },

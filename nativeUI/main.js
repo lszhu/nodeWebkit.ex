@@ -26,11 +26,12 @@ function initTray() {
         type: 'normal',
         label: 'hide/show',
         click: function() {
-            if (hidden) {
+          /*  if (hidden) {
                 win.show();
             } else {
                 win.hide();
-            }
+            }*/
+            win[hidden ? 'show' : 'hide']();
             hidden = !hidden;
         }
     }));
