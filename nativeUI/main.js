@@ -96,6 +96,15 @@ function initMenubar() {
                 continue;
             }
             subMenu.append(new gui.MenuItem(menuData[sub][opt]));
+            if (sub == 'file' && opt == 'open') {
+                subMenu.items[i].click = function() {
+                    var file = document.getElementById('file');
+                    //console.log(file);
+                    file.click();
+                };
+                i++;
+                continue;
+            }
             subMenu.items[i++].click = function() {
                 var dom = document.getElementsByTagName('body')[0];
                 op.noopDomMsg(this.label, dom);
@@ -109,9 +118,27 @@ function initMenubar() {
     win.menu = menubar;
 }
 
+function initFileOpen() {
+    var button = document.getElementsByTagName('button')[0];
+    button.addEventListener('click', function(event) {
+        var file = document.getElementById('file');
+        file.click();
+        console.log(event.target.value);
+    });
+    var file = document.getElementById('file');
+    file.addEventListener('change', function(event) {
+        var body = document.getElementsByTagName('body')[0];
+        var msg = document.createElement('div');
+        msg.innerHTML = this.value.split(';').join('<br />');
+        body.appendChild(msg);
+        console.log(this.value);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initContextMenu();
     initMenubar();
     testApp();
     initTray();
+    initFileOpen();
 });
