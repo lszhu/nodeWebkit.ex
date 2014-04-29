@@ -1,6 +1,46 @@
 var op = require('./operation.js');
 var gui = require('nw.gui');
 
+var win = gui.Window.get();
+var menubar = new gui.Menu({type: 'menubar'});
+
+var tray;
+var hidden = false;
+
+function testApp() {
+    var app = gui.App;
+    console.log(app.argv);
+    console.log(app.fullArgv);
+    console.log(app.dataPath);
+    console.log(app.manifest);
+}
+
+function initTray() {
+    tray = new gui.Tray({
+        title: 'Tray',
+        tooltip: 'just a test',
+        icon: 'email.png'
+    });
+    var menu = new gui.Menu();
+    menu.append(new gui.MenuItem({
+        type: 'normal',
+        label: 'hide/show',
+        click: function() {
+            if (hidden) {
+                win.show();
+            } else {
+                win.hide();
+            }
+            hidden = !hidden;
+        }
+    }));
+    menu.append(new gui.MenuItem({
+        type: 'checkbox',
+        label: 'log it'
+    }));
+    tray.menu = menu;
+}
+
 function initContextMenu() {
     var menu = new gui.Menu();
     menu.append(new gui.MenuItem({label: 'Item A'}));
@@ -38,31 +78,6 @@ function initContextMenu() {
     }, false);
 }
 
-var win = gui.Window.get();
-var menubar = new gui.Menu({type: 'menubar'});
-
-/*
-var sub1 = new gui.Menu();
-sub1.append(new gui.MenuItem({
-    label: 'Text 11',
-    click: function() {
-        var element = document.createElement('div');
-        element.appendChild(document.createTextNode('Text 11'));
-        document.body.appendChild(element);
-    }
-}));
-
-menubar.append(new gui.MenuItem({label: 'Sub1', submenu: sub1}));
-menubar.append(new gui.MenuItem({label: 'Sub2', submenu: sub2}));
-win.menu = menubar;
-menu.items[0].click = function() {
-    console.log('click');
-};
-console.log(process.cwd());
-os = require('os');
-console.log('Operation System:' + os.platform());
-*/
-
 // init window toolbar
 function initMenubar() {
     var subMenu, i;
@@ -97,4 +112,6 @@ function initMenubar() {
 document.addEventListener('DOMContentLoaded', function() {
     initContextMenu();
     initMenubar();
+    testApp();
+    initTray();
 });
