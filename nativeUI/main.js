@@ -15,15 +15,22 @@ function initContextMenu() {
     }
 */
     menu.append(new gui.MenuItem({
-        label: 'Click me',
+        label: 'show kernel',
         click: function() {
             var element = document.createElement('div');
             element.appendChild(document.createTextNode('open kernel.org'));
             document.body.appendChild(element);
             var new_win = gui.Window.get(window.open('http://www.kernel.org'));
-            setTimeout(function() {new_win.close();}, 2000);
+            setTimeout(function() {new_win.close();}, 6000);
         }
     }));
+    menu.append(new gui.MenuItem({
+        label: 'Debug',
+        click: function() {
+            win.showDevTools();
+        }
+    }));
+
     document.body.addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
         menu.popup(ev.x, ev.y);

@@ -2,10 +2,10 @@
     "name": "nativeUI",
     "main": "index.html",
     "description": "study demo",
-    "version": "0.1",
+    "version": "0.2",
     "window": {
-        "icon": "link.png",
-        "toolbar": true,
+        "icon": "search.png",
+        "toolbar": false,
         "width": 800,
         "height": 600
     }
