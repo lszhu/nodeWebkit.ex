@@ -4,231 +4,150 @@ exports.data = function() {
             open: {
                 label: 'open',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function() {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             save: {
                 label: 'save',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function() {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'new': {
                 label: 'new',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             writable: {
                 label: 'writable',
-                    type: 'checkbox',
-                    click: function() {
-                    alert('file is ' + this.checked ? writable: unwritable);
-                }
+                    type: 'checkbox'
             }
         },
         edit: {
             'delete': {
                 label: 'delete',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function () {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             find: {
                 label: 'find',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function () {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'cut': {
                 label: 'cut',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function () {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'paste': {
                 label: 'paste',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function () {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'split1': {
                 type: 'separator'
             },
             savable: {
                 label: 'savable',
-                    type: 'checkbox',
-                    click: function () {
-                    alert('file is ' + this.checked ? writable : unwritable);
-                }
+                    type: 'checkbox'
             }
         },
         view: {
             open: {
                 label: 'open',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function() {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             save: {
                 label: 'save',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function() {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'new': {
                 label: 'new',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             writable: {
                 label: 'writable',
-                    type: 'checkbox',
-                    click: function() {
-                    alert('file is ' + this.checked ? writable: unwritable);
-                }
+                    type: 'checkbox'
             }
         },
         code: {
             'delete': {
                 label: 'delete',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function() {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             find: {
                 label: 'find',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function() {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'cut': {
                 label: 'cut',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'paste': {
                 label: 'paste',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'split1': {
                 type: 'separator'
             },
             savable: {
                 label: 'savable',
-                    type: 'checkbox',
-                    click: function() {
-                    alert('file is ' + this.checked ? writable: unwritable);
-                }
+                    type: 'checkbox'
             }
         },
         tools: {
             open: {
                 label: 'open',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function() {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             save: {
                 label: 'save',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function() {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'new': {
                 label: 'new',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             writable: {
                 label: 'writable',
-                    type: 'checkbox',
-                    click: function() {
-                    alert('file is ' + this.checked ? writable: unwritable);
-                }
+                    type: 'checkbox'
             }
         },
         help: {
             'delete': {
                 label: 'delete',
                     type: 'normal',
-                    icon: 'images/email.png',
-                    click: function() {
-                    alert('open file ok.');
-                }
+                    icon: 'images/email.png'
             },
             find: {
                 label: 'find',
                     type: 'normal',
-                    icon: 'images/disk.png',
-                    click: function() {
-                    alert('save file ok.');
-                }
+                    icon: 'images/disk.png'
             },
             'cut': {
                 label: 'cut',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'paste': {
                 label: 'paste',
                     type: 'normal',
-                    icon: 'images/banana.png',
-                    click: function() {
-                    alert('new file created ok.');
-                }
+                    icon: 'images/banana.png'
             },
             'split1': {
                 type: 'separator'
             },
             savable: {
                 label: 'savable',
-                    type: 'checkbox',
-                    click: function() {
-                    alert('file is ' + this.checked ? writable: unwritable);
-                }
+                    type: 'checkbox'
             }
         }
     };

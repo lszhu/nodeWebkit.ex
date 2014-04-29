@@ -1,13 +1,4 @@
-function noopDomMsg(name, dom) {
-    var msg = document.createElement('div');
-    msg.innerText = name + ' op finished.';
-    dom.appendChild(msg);
-}
-
-function noopAlert(name) {
-    alert(name + ' op finished.');
-}
-
+var op = require('./operation.js');
 var gui = require('nw.gui');
 
 function initContextMenu() {
@@ -18,11 +9,11 @@ function initContextMenu() {
     menu.append(new gui.MenuItem({label: 'Item C'}));
 
     menu.removeAt(1);
-
+/*
     for (var i = 0; i < menu.items.length; ++i) {
         console.log(menu.items[i]);
     }
-
+*/
     menu.append(new gui.MenuItem({
         label: 'Click me',
         click: function() {
@@ -40,9 +31,9 @@ function initContextMenu() {
     }, false);
 }
 
-
 var win = gui.Window.get();
 var menubar = new gui.Menu({type: 'menubar'});
+
 /*
 var sub1 = new gui.Menu();
 sub1.append(new gui.MenuItem({
@@ -65,27 +56,34 @@ os = require('os');
 console.log('Operation System:' + os.platform());
 */
 
+// init window toolbar
 function initMenubar() {
-    var subMenu;
+    var subMenu, i;
     var menu = require('./menu.js');
     var menuData = menu.data();
-    console.log('menuData.file: ' + menuData.file);
+    //console.log('menuData.file: ' + menuData.file);
     for (var sub in menuData) {
         if (!menuData.hasOwnProperty(sub)) {
             continue;
         }
-        console.log(menuData[sub]);
+        i = 0;
+        //console.log(menuData[sub]);
         subMenu = new gui.Menu();
         for (var opt in menuData[sub]) {
             if (!menuData[sub].hasOwnProperty(opt)) {
                 continue;
             }
             subMenu.append(new gui.MenuItem(menuData[sub][opt]));
-            console.log(subMenu.items[0]);
+            subMenu.items[i++].click = function() {
+                var dom = document.getElementsByTagName('body')[0];
+                op.noopDomMsg(this.label, dom);
+                //op.noopAlert(this.label);
+            };
+            //console.log(subMenu.items[0]);
         }
         menubar.append(new gui.MenuItem({label: sub, submenu: subMenu}));
     }
-    console.log('reach end.');
+    //console.log('reach end.');
     win.menu = menubar;
 }
 
