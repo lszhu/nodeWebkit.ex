@@ -106,6 +106,24 @@ function initMenubar() {
                 i++;
                 continue;
             }
+            if (sub == 'view' && opt == 'display') {
+                subMenu.items[i].click = function() {
+                    var file = document.getElementById('open');
+                    file.addEventListener('change', function(e) {
+                        var fs = require('fs');
+                        console.log(this.value);
+                        fs.readFile(this.value, 'utf8', function(e, d) {
+                            console.log(d);
+                            var dom = document.getElementsByTagName('body')[0];
+                            op.noopDomMsg(d, dom);
+                        });
+                    });
+                    var openFile = document.getElementById('open');
+                    openFile.click();
+                };
+                i++;
+                continue;
+            }
             subMenu.items[i++].click = function() {
                 var dom = document.getElementsByTagName('body')[0];
                 op.noopDomMsg(this.label, dom);
