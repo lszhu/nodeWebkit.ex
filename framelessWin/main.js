@@ -72,8 +72,13 @@ function initContextMenu() {
 document.addEventListener('DOMContentLoaded', function() {
     initFrame();
     initContextMenu();
+    var alimama = document.getElementById('alimama');
+    alimama.src = aliLinks['login'];
+    alimama.addEventListener('load', function() {
+        roam();
+    });
 });
 
 window.addEventListener('load', function(e) {
-    loginAlimama(account);
+    //loginAlimama(account);
 });
