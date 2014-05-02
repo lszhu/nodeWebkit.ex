@@ -69,30 +69,11 @@ function initContextMenu() {
     });
 }
 
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
     initFrame();
     initContextMenu();
-    login(account);
 });
 
-var account = {username: 'test', password: 'default'};
-
-function loginAlimama(acc) {
-    var web = document.querySelector('iframe').contentDocument;
-    var username = web.getElementById('TPL_username_1');
-    var password = web.getElementById('TPL_password_1');
-    username.value = acc.username;
-    password.value = acc.password;
-    web.getElementById('J_SubmitStatic').click();
-}
-
-function enterTblm() {
-    var web = document.querySelector('iframe').contentDocument;
-    web.querySelector('a[href="http://pub.alimama.com/index.htm"]').click();
-}
-
-function getTbkLink() {
-    var web = document.querySelector('iframe').contentDocument;
-    return web.querySelector('textarea').value;
-}
-
+window.addEventListener('load', function(e) {
+    loginAlimama(account);
+});
