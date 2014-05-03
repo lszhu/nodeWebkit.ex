@@ -3,10 +3,11 @@
     "main": "index.html",
     "description": "study demo",
     "version": "0.2",
+    "user-agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36",
     "window": {
         "frame": false,
         "toolbar": false,
-        "width": 900,
+        "width": 800,
         "height": 600
     }
 }

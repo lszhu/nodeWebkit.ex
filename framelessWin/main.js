@@ -1,6 +1,6 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
-win.width = 1200;
+win.width = 1000;
 win.height = 800;
 var maximized = false;
 // init the basic frame window, add minimize, maximize and close button
@@ -64,7 +64,7 @@ function initContextMenu() {
     document.body.addEventListener('contextmenu', function(e) {
         e.preventDefault();
         menu.popup(e.x, e.y);
-        console.log(e);
+        //console.log(e);
         return false;
     });
 }

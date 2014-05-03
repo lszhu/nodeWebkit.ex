@@ -14,7 +14,6 @@ var aliLinks = {
 };
 
 // TaoBao account used to login alimama TaoBaoLianMeng
-
 var account = {username: 'test', password: 'default'};
 
 // login to Alimama TaoBaoLianMeng using TaoBao account
@@ -35,14 +34,29 @@ function enterTblm() {
 
 // enter webpage for translating normal goods link to TaoBaoKe link.
 function translator() {
-    var frame = document.getElementById('alimama');
-    frame.src = aliLinks['linkChang'];
+    var alimama = document.getElementById('alimama');
+    alimama.src = aliLinks['linkChang'];
 }
 
 // get goods promotion link
 function getTbkLink() {
+    timeout -= 100;
     var web = document.getElementById('alimama').contentDocument;
-    return web.querySelector('textarea').value;
+    var links =  web.querySelectorAll('textarea');
+    if (links && links[1] &&
+        links[1].value.search('http://s.click.taobao.com') != -1) {
+        // open TaoBaoKe link to prepare shopping.
+        openTbkLink(links[1].value);
+    } else {
+        setTimeout(getTbkLink, 100);
+    }
+}
+
+// open TaoBaoKe link to prepare shopping.
+function openTbkLink(link) {
+    console.log('TaoBaoKe link is: ' + link);
+    //var alimama = document.getElementById('alimama');
+    window.open(link);
 }
 
 // check the url to select correct window load event handler.
@@ -59,38 +73,57 @@ function roam() {
     }
 }
 
-var tempLink = 'http://detail.tmall.com/item.htm?spm=a1z10.4.w5003-6987350847.59.siyg9n&id=38548928798&scene=taobao_shop';
+var tempLink = 'http://detail.tmall.com/item.htm?spm=a1z10.1.w5003-5411246920.2.06shHl&id=36548837757&rn=82efd45019cd6428a22d115cfd20bdff&scene=taobao_shop';
 var link = tempLink;
+
+// query delay time.
+var timeout = 2000;
+
 // translate normal link to TaoBaoKe link
 function linkTranslate(link) {
+    timeout -= 50;
     var web = document.getElementById('alimama').contentDocument;
-    web.querySelector('textarea').value = link;
-    web.querySelector('button').click();
-    // query delay time.
-    var time = 2000;
-    // every 50ms poll the anchors and trigger click event in correct anchor.
-    function poll() {
-        time -= 50;
-        if (time < 0) {
-            console.log('query time out.');
-            return;
-        }
-        var form = web.querySelector('form');
+    var textArea = web.querySelector('textarea');
+    var submit = web.querySelector('button');
+    if (timeout > 0 && (!textArea || !submit)) {
+        setTimeout(function() {linkTranslate(link);}, 50);
+        return;
+    }
+    textArea.value = link;
+    submit.click();
+    timeout = 2000;
+    setTimeout(pollOpt, 500);
+}
 
-        var as = web.querySelectorAll('a');
-        if (form && as) {
-            var promote = form.querySelectorAll('span.dropdown-text');
-            if (promote) {
-                console.log(promote);
-                for (var i = 0; i < as.length; i++) {
-                    if (as[i].innerText == '确定') {
-                        as[i].click();
-                        return;
-                    }
+// every 50ms poll the anchors and trigger click event in correct anchor.
+function pollOpt() {
+    timeout -= 100;
+    if (timeout < 0) {
+        console.log('query time out.');
+        return;
+    }
+    var web = document.getElementById('alimama').contentDocument;
+    var form = web.querySelector('form');
+    var as = web.querySelectorAll('a');
+    if (form && as) {
+        var promote = form.querySelectorAll('span.dropdown-text');
+        var channel = form.querySelectorAll('span.title');
+        console.log(channel);
+        if (promote && promote.length > 1 && channel) {
+            //console.log(promote);
+            //console.log('innerText: ' + as[76].innerText == '确定');
+            for (var i = 0; i < as.length; i++) {
+                console.log(as[i].innerText.search('\u786e\u5b9a') != -1);
+                //check as[i].innerText == '确定'
+                if (as[i].innerText.search('\u786e\u5b9a') != -1) {
+                    console.log(as[i]);
+                    //setTimeout((function(i) {return as[i].click})(i), 100);
+                    as[i].click();
+                    setTimeout(getTbkLink, 200);
+                    return;
                 }
             }
         }
-        window.setTimeout(poll, 50);
     }
-    poll();
+    setTimeout(pollOpt, 100);
 }
